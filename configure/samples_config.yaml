@@ -1,0 +1,35 @@
+#####################################
+#
+#       SAMPLE CONFIGURATION
+#
+#####################################
+species_list: 
+  # - "Corynebacterium_glutamicum_atcc_13032"
+
+samples:
+  # Corynebacterium_glutamicum_atcc_13032:
+  #   SRR6207753:
+  #     type: "NGS"
+  #     platform: "PacBio_squel"
+  #     fq_paths:  
+  #       - "data/samples/SRR6207753/SRR6207753_1.fq.gz" 
+  #       - "data/samples/SRR6207753/SRR6207753_2.fq.gz" 
+  #     ReadGroup:
+  #       RGID: "SRR6207753"
+  #       RGSM: "SRR6207753"
+  #       RGPL: "PacBio_squel"
+  #       RGLB: "GGHYN"
+  #       RGPU: "SRR6207753"
+  species:
+    sample:
+      type: 
+      platform: 
+      fq_paths:  # PE
+        - 
+        - 
+      ReadGroup:
+        RGID: 
+        RGSM: 
+        RGPL: 
+        RGLB: 
+        RGPU: 

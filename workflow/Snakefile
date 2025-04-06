@@ -1,0 +1,95 @@
+"""
+AUTOVAR - Automated Variant Analysis Pipeline
+Version: 0.8.0
+
+This Snakemake pipeline performs genomic data analysis including:
+- Quality Control
+- Read Mapping
+- Assembly
+- Variant Calling
+- Annotation
+"""
+
+import json
+import yaml
+
+# Function to validate configuration files
+def validate_config(config, required_keys):
+    """Validate configuration file contains required keys"""
+    missing_keys = [key for key in required_keys if key not in config]
+    if missing_keys:
+        raise ValueError(f"Missing required config fields: {missing_keys}")
+
+# Function to retrieve the first FASTQ file for a sample
+def get_raw_fq1(wildcards):
+    """Retrieve first FASTQ path for a sample with validation"""
+    if wildcards.sample not in samples_config["samples"][wildcards.species]:
+        raise ValueError(f"Sample {wildcards.sample} not found in {wildcards.species}")
+    return samples_config["samples"][wildcards.species][wildcards.sample]["fq_paths"][0]
+    
+# Function to retrieve the second FASTQ file for a sample
+def get_raw_fq2(wildcards):
+    """Retrieve second FASTQ path for a sample with validation"""
+    if wildcards.sample not in samples_config["samples"][wildcards.species]:
+        raise ValueError(f"Sample {wildcards.sample} not found in {wildcards.species}")
+    return samples_config["samples"][wildcards.species][wildcards.sample]["fq_paths"][1]
+
+# Main configuration file
+configfile: "configure/config.yaml"
+
+# Load sample configuration
+try:
+    with open("configure/samples_config.yaml", 'r') as stream:
+        samples_config = yaml.safe_load(stream)
+        validate_config(samples_config, ['species_list', 'samples'])
+        samples = samples_config['samples']
+except Exception as e:
+    print(f"Error: Failed to load sample config\n{str(e)}")
+    raise
+
+# Load reference genome configuration
+try:
+    with open("configure/references_config.yaml", 'r') as stream:
+        references_config = yaml.safe_load(stream)
+        validate_config(references_config, ['reference'])
+        references = references_config['reference']
+except Exception as e:
+    print(f"Error: Failed to load reference config\n{str(e)}")
+    raise
+
+# Define wildcard constraints for species and sample names
+wildcard_constraints:
+    species = r'\w+',  # Alphanumeric and underscores only
+    sample = r'\w+'    # Alphanumeric and underscores only
+
+# Rule to define the final outputs of the pipeline
+rule all:
+    input:
+        # QC outputs
+        expand("results/QC/{species}/multiqc/final/", species=samples_config["species_list"]),
+        
+        # Mapping outputs
+        *[f"results/Mapping/{species}/{sample}/samtools/{sample}.stats"
+            for species in samples_config["species_list"]
+            for sample in samples_config["samples"][species].keys()],
+        
+        # Assembly outputs
+        *[f"results/Assembly/{species}/{sample}/QUAST/.done"
+            for species in samples_config["species_list"]
+            for sample in samples_config["samples"][species].keys()],
+        
+        # Plots outputs
+        *[f"results/plots/{species}/{sample}/depth/{sample}_depth.svg"
+          for species in samples_config["species_list"]
+          for sample in samples_config["samples"][species].keys()],
+        expand("results/plots/{species}/snpeff_effects_{species}.png", species=samples_config["species_list"]),
+        expand("results/plots/{species}/annotation/{species}_amr_variants.tsv", species=samples_config["species_list"]),
+
+# Include modular rule files
+include: "rules/qc.smk"
+include: "rules/mapping.smk"
+include: "rules/assembly.smk"
+include: "rules/mk_rm_duplication.smk"
+include: "rules/SNPIndel.smk"
+include: "rules/annotation.smk"
+include: "rules/plots.smk"
