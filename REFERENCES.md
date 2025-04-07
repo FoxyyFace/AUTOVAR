@@ -6,6 +6,7 @@
 - **GATK**: McKenna A et al. (2010) [The Genome Analysis Toolkit: a MapReduce framework for analyzing next-generation DNA sequencing data](https://doi.org/10.1101/gr.107524.110). *Genome Research* 20(9):1297-1303  
 - **SPAdes**: Bankevich A et al. (2012) [SPAdes: A New Genome Assembly Algorithm and Its Applications to Single-Cell Sequencing](https://doi.org/10.1089/cmb.2012.0021). *Journal of Computational Biology* 19(5):455-477  
 - **SnpEff**: Cingolani P et al. (2012) [A program for annotating and predicting the effects of single nucleotide polymorphisms](https://doi.org/10.4161/fly.19695). *Fly* 6(2):80-92  
+- **SnpSift**: "Using Drosophila melanogaster as a model for genotoxic chemical mutational studies with a new program, SnpSift", Cingolani, P., et. al., Frontiers in Genetics, 3, 2012.
 
 ## Quality Control & Processing
 - **Trim Galore**: Krueger F. [Trim Galore!](https://github.com/FelixKrueger/TrimGalore) (Version 0.6.10)  
