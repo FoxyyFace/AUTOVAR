@@ -17,8 +17,12 @@ AUTOVAR is a Snakemake pipeline designed for bacterial genomic variant analysis.
    - Depth distribution diagram of the bam file
    - A simple report diagram of the SnpEff annotation file
    - Detect if the variant occurs in the ARM region of the genome
+ 
+Now AUTOVAR have added the simple RNA analyse mode.You can change the mode in "config.yaml".The pipeline including:
+-FeatureCounts
+-Karen2
 
-Version: 0.8.0
+Version: 0.8.5
 
 ## Quick Start Guide
 
@@ -43,8 +47,9 @@ Before running the pipeline, you need to configure the following files:
 - Edit `configure/config.yaml` for general settings
 - Edit `configure/samples_config.yaml` for sample information
 - Edit `configure/references_config.yaml` for reference genome paths
-DON'T FORGET:
-## .fa
+- you can use the auto_update_samples_config.py to auto change the samples_config.yaml.
+### DON'T FORGET:
+ .fa
 - Place the reference genome data in `data/reference/{species}/species.fa`
 
 ## .fq.gz
@@ -145,7 +150,7 @@ The pipeline includes the following main modules:
 - `rules/annotation.smk`: Variant Annotation
 - `rules/plots.smk`: Results Simple Analyse
 
-## Project Structure
+## Basic Project Structure(DNA)
 ```
 AUTOVAR/
 ├── configure/                      # Configuration files
