@@ -1,9 +1,15 @@
 global:
   strict_qc: False  
+  #it's for DNAseq.
   #control the rule "trim_adapter",if use Faslse, the script will stop with pecentage, else it will stop with numbers. with 0.00% or 0.
   #dafault is False,use True will consume a lot of computing resource an time(about 60% in this rule),but it can remove the adapter or transposon sequence completely.
 
-  #new mod is developing......
+  mode: "RNA" 
+  #RNA or DNA.
+  #SNP,Indel,snpEff annotation.and simple visualization is included in DNAmode.
+  #featureCounts ,Karen2(for metagenomic analysis,classify the species) is included RNAmode 
+
+  #new mode is developing......
 
 
 gatk_VariantFiltration:

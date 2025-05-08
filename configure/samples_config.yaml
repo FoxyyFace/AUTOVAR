@@ -1,35 +1,136 @@
-#####################################
-#
-#       SAMPLE CONFIGURATION
-#
-#####################################
-species_list: 
-  # - "Corynebacterium_glutamicum_atcc_13032"
-
+species_list:
+- Pseudomonas_aeruginosa
 samples:
-  # Corynebacterium_glutamicum_atcc_13032:
-  #   SRR6207753:
-  #     type: "NGS"
-  #     platform: "PacBio_squel"
-  #     fq_paths:  
-  #       - "data/samples/SRR6207753/SRR6207753_1.fq.gz" 
-  #       - "data/samples/SRR6207753/SRR6207753_2.fq.gz" 
-  #     ReadGroup:
-  #       RGID: "SRR6207753"
-  #       RGSM: "SRR6207753"
-  #       RGPL: "PacBio_squel"
-  #       RGLB: "GGHYN"
-  #       RGPU: "SRR6207753"
-  species:
-    sample:
-      type: 
-      platform: 
-      fq_paths:  # PE
-        - 
-        - 
-      ReadGroup:
-        RGID: 
-        RGSM: 
-        RGPL: 
-        RGLB: 
-        RGPU: 
+  Pseudomonas_aeruginosa:
+    SRR1047563:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR1047563/SRR1047563.fastq.gz
+      source: unknown
+    SRR1047581:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR1047581/SRR1047581.fastq.gz
+      source: unknown
+    SRR1173920:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR1173920/SRR1173920.fastq.gz
+      source: unknown
+    SRR1173921:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR1173921/SRR1173921.fastq.gz
+      source: unknown
+    SRR22383514:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR22383514/SRR22383514.fastq.gz
+      source: unknown
+    SRR22383516:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR22383516/SRR22383516.fastq.gz
+      source: unknown
+    SRR22383517:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR22383517/SRR22383517.fastq.gz
+      source: unknown
+    SRR23447137:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR23447137/SRR23447137.fastq.gz
+      source: unknown
+    SRR23447139:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR23447139/SRR23447139.fastq.gz
+      source: unknown
+    SRR23447142:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR23447142/SRR23447142.fastq.gz
+      source: unknown
+    SRR6833343:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR6833343/SRR6833343.fastq.gz
+      source: unknown
+    SRR6833344:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR6833344/SRR6833344.fastq.gz
+      source: unknown
+    SRR6833345:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR6833345/SRR6833345.fastq.gz
+      source: unknown
+    SRR6833346:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR6833346/SRR6833346.fastq.gz
+      source: unknown
+    SRR6833347:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR6833347/SRR6833347.fastq.gz
+      source: unknown
+    SRR6833348:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR6833348/SRR6833348.fastq.gz
+      source: unknown
+    SRR6833349:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR6833349/SRR6833349.fastq.gz
+      source: unknown
+    SRR6833350:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR6833350/SRR6833350.fastq.gz
+      source: unknown
+    SRR6833351:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR6833351/SRR6833351.fastq.gz
+      source: unknown
+    SRR7473182:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR7473182/SRR7473182.fastq.gz
+      source: unknown
+    SRR8377190:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR8377190/SRR8377190.fastq.gz
+      source: unknown
+    SRR8377191:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/SRR8377191/SRR8377191.fastq.gz
+      source: unknown

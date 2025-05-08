@@ -1,16 +1,46 @@
-#####################################
-#
-#       REFERENCE GENOME SETTINGS
-#
-#####################################
 reference:
-  # Specify the reference genome paths for each species
-  # Corynebacterium_glutamicum_atcc_13032:                  ### The names follow the format of the SnpEff database
+  Pseudomonas_aeruginosa:
+    name: "Pseudomonas_aeruginosa"
+    path: "data/reference/Pseudomonas_aeruginosa/Pseudomonas_aeruginosa.fasta"
+    source: "GCF_000014625.1"
+    prefix: "PA14"
+    gff: "data/reference/Pseudomonas_aeruginosa/Pseudomonas_aeruginosa.gff3"
+
+
+kraken:
+  standard_08: "/home/oliver/k2_standard_08gb"
+  standard_16: "/home/oliver/k2_standard_16gb"
+
+
+
+  # Corynebacterium_glutamicum_atcc_13032:
   #   name: "Corynebacterium_glutamicum_atcc_13032"
   #   path: "data/reference/Corynebacterium_glutamicum_atcc_13032/Corynebacterium_glutamicum_atcc_13032.fa"
-  #   source: "GCF_000011325.1_ASM1132v1"
-  species:
-    name:
-    path:
-    source:
+  #   source: "GenBank: BA000036.3"
+  #   gff: "data/reference/Corynebacterium_glutamicum_atcc_13032/Corynebacterium_glutamicum_atcc_13032.gff"
+  # Janibacter_melonis:
+  #   name: "Janibacter_melonis"
+  #   path: "data/reference/Janibacter_melonis/Janibacter_melonis.fa"
+  #   source: "GenBank: "
+  #   gff: "data/reference/Janibacter_melonis/Janibacter_melonis.gff"
 
+  # Escherichia_coli_o157_h7_str_edl933:
+  #   name: "Escherichia_coli_o157_h7_str_edl933"
+  #   path: "data/reference/Escherichia_coli_o157_h7_str_edl933/Escherichia_coli_o157_h7_str_edl933.fa"
+  #   source: "GenBank: CP008957.1"
+  #   gff: "data/reference/Escherichia_coli_o157_h7_str_edl933/Escherichia_coli_o157_h7_str_edl933.gff"
+  # Escherichia_coli:
+  #   name: "Escherichia_coli"
+  #   path: "data/reference/Escherichia_coli/Escherichia_coli.fa"
+  #   source: "GenBank: BA000036.3"
+  #   gff: "data/reference/Escherichia_coli/Escherichia_coli.gff"
+  # Corynebacterium_jeikeium_atcc_43734:
+  #   name: "Corynebacterium_jeikeium_atcc_43734"
+  #   path: "data/reference/Corynebacterium_jeikeium_atcc_43734/Corynebacterium_jeikeium_atcc_43734.fa"
+  #   source: "GenBank: GG700833.1"
+  #   gff: "data/reference/Corynebacterium_jeikeium_atcc_43734/Corynebacterium_jeikeium_atcc_43734.gff"
+  #  Escherichia_coli_kte1:
+  #   name: "Escherichia_coli_kte1"
+  #   path: "data/reference/Escherichia_coli_kte1/Escherichia_coli_kte1.fa"
+  #   source: "GenBank: "
+  #   gff: "data/reference/Escherichia_coli_kte1/Escherichia_coli_kte1.gff"
