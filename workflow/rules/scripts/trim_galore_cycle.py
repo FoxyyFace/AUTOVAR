@@ -4,7 +4,7 @@ from pathlib import Path
 import uuid
 import re
 
-MAX_CYCLES = 15  # Maximum number of cycles reduced to 15
+MAX_CYCLES = 15  # Maximum number of cycles
 
 def has_adapter_contamination_count(report_path):
     # Check for adapter contamination (based on absolute count)
