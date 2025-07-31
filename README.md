@@ -3,7 +3,7 @@
 
 [![Snakemake](https://img.shields.io/badge/snakemake-≥9.6.2-brightgreen.svg?style=flat)](https://snakemake.readthedocs.io)  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
-[![Python](https://img.shields.io/badge/Python-3.13.5-3776AB.svg?logo=python&logoColor=white)](https://www.python.org)  
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB.svg?logo=python&logoColor=white)](https://www.python.org)  
 
 ## 概述  
 AUTOVAR是一个基于Snakemake的自动化基因分析流程，支持RNA-seq和DNA-seq两种分析模式：  
