@@ -6,7 +6,7 @@
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB.svg?logo=python&logoColor=white)](https://www.python.org)  
 
 ## 概述  
-AUTOVAR是一个基于Snakemake的自动化基因分析流程，支持RNA-seq和DNA-seq两种分析模式：  
+AUTOVAR是一个使用Snakemake搭建的自动化基因分析流程，支持RNA-seq和DNA-seq两种分析模式：  
 
 ### RNA-seq模式  
 - 质量控制(QC)  
