@@ -1,7 +1,7 @@
 # AUTOVAR - 自动化基因分析流程  
 版本: 0.8.0  
 
-[![Snakemake](https://img.shields.io/badge/snakemake-≥8.29.0-brightgreen.svg?style=flat)](https://snakemake.readthedocs.io)  
+[![Snakemake](https://img.shields.io/badge/snakemake-≥9.6.2-brightgreen.svg?style=flat)](https://snakemake.readthedocs.io)  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 [![Python](https://img.shields.io/badge/Python-3.13.5-3776AB.svg?logo=python&logoColor=white)](https://www.python.org)  
 
