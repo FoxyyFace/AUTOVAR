@@ -1,0 +1,146 @@
+"""
+AUTOVAR - Automated Variant Analysis Pipeline
+Version: 0.8.0
+
+This Snakemake pipeline performs genomic data analysis including:
+- RNAseq
+- DNAseq
+- 
+- 
+- 
+"""
+
+import json
+import yaml
+
+# Function to validate configuration files
+def validate_config(config, required_keys):
+    """Validate configuration file contains required keys"""
+    missing_keys = [key for key in required_keys if key not in config]
+    if missing_keys:
+        raise ValueError(f"Missing required config fields: {missing_keys}")
+
+# Function to retrieve the first FASTQ file for single sample
+def get_raw_fq(wildcards):
+    """Retrieve first FASTQ path for a sample with validation"""
+    if wildcards.sample not in samples_config["samples"][wildcards.species]:
+        raise ValueError(f"Sample {wildcards.sample} not found in {wildcards.species}")
+    return samples_config["samples"][wildcards.species][wildcards.sample]["fq_paths"][0]
+
+# Function to retrieve the first FASTQ file for a sample
+def get_raw_fq1(wildcards):
+    """Retrieve first FASTQ path for a sample with validation"""
+    if wildcards.sample not in samples_config["samples"][wildcards.species]:
+        raise ValueError(f"Sample {wildcards.sample} not found in {wildcards.species}")
+    return samples_config["samples"][wildcards.species][wildcards.sample]["fq_paths"][0]
+#Function to retrieve the second FASTQ file for a sample
+def get_raw_fq2(wildcards):
+    """Retrieve second FASTQ path for a sample with validation"""
+    if wildcards.sample not in samples_config["samples"][wildcards.species]:
+        raise ValueError(f"Sample {wildcards.sample} not found in {wildcards.species}")
+    return samples_config["samples"][wildcards.species][wildcards.sample]["fq_paths"][1]
+
+# Main configuration file
+configfile: "configure/config.yaml"
+
+# Load sample configuration
+try:
+    with open("configure/samples_config.yaml", 'r') as stream:
+        samples_config = yaml.safe_load(stream)
+        validate_config(samples_config, ['species_list', 'samples'])
+        samples = samples_config['samples']
+except Exception as e:
+    print(f"Error: Failed to load sample config\n{str(e)}")
+    raise
+
+# Load reference genome configuration
+try:
+    with open("configure/references_config.yaml", 'r') as stream:
+        references_config = yaml.safe_load(stream)
+        validate_config(references_config, ['reference'])
+        references = references_config['reference']
+except Exception as e:
+    print(f"Error: Failed to load reference config\n{str(e)}")
+    raise
+
+# Define wildcard constraints for species and sample names
+wildcard_constraints:
+    species = r'\w+',  # Alphanumeric and underscores only
+    sample = r'\w+'    # Alphanumeric and underscores only
+
+# RNA模式
+if config["global"]["mode"] == "RNA":
+    rna_qc_outputs = [
+        f"results/QC/{species}/{sample}/fastqc/trimmed/"##results/QC/{species}/{sample}/fastqc/final/
+        for species in samples_config["species_list"]
+        for sample in samples_config["samples"][species].keys()
+    ]
+    rna_map_outputs = [
+        f"results/Mapping/{species}/{sample}/samtools/sorted_{sample}.bam"
+        for species in samples_config["species_list"]
+        for sample in samples_config["samples"][species].keys()
+    ]
+    rna_analyse_outputs = [
+        f"results/Analyse/{species}/{sample}/featureCounts/counts_{sample}.txt"
+        for species in samples_config["species_list"]
+        for sample in samples_config["samples"][species].keys()
+    ]
+    rna_kraken_outputs = [
+        f"results/kraken2/{species}/{sample}/kraken2_report.txt"
+        for species in samples_config["species_list"]
+        for sample in samples_config["samples"][species].keys()
+    ]
+    rule all:
+        input:
+            rna_qc_outputs +
+            rna_map_outputs +
+            rna_analyse_outputs
+            # rna_analyse_outputs +
+            # rna_kraken_outputs +
+            # [
+            #     "results/kraken2/summary/top10_species.tsv",
+            #     "results/Analyse/summary/PA14_46160_volcano_plot.png"
+            # ]
+    # include: "rule_rna_single/qc.smk"
+    # include: "rule_rna_single/map.smk"
+    # include: "rule_rna_single/analyse.smk"
+
+    include: "rule_rna_pairedend/qc.smk"
+    include: "rule_rna_pairedend/map.smk"
+    include: "rule_rna_pairedend/analyse.smk"
+
+# DNA模式
+elif config["global"]["mode"] == "DNA":
+    dna_qc_outputs = expand("results/QC/{species}/multiqc/final/", species=samples_config["species_list"])
+    dna_mapping_outputs = [
+        f"results/Mapping/{species}/{sample}/samtools/{sample}.stats"
+        for species in samples_config["species_list"]
+        for sample in samples_config["samples"][species].keys()
+    ]
+    dna_assembly_outputs = [
+        f"results/Assembly/{species}/{sample}/QUAST/.done"
+        for species in samples_config["species_list"]
+        for sample in samples_config["samples"][species].keys()
+    ]
+    dna_depth_outputs = [
+        f"results/plots/{species}/{sample}/depth/{sample}_depth.svg"
+        for species in samples_config["species_list"]
+        for sample in samples_config["samples"][species].keys()
+    ]
+    dna_snpeff_outputs = expand("results/plots/{species}/snpeff_effects_{species}.png", species=samples_config["species_list"])
+    dna_amr_outputs = expand("results/plots/{species}/annotation/{species}_amr_variants.tsv", species=samples_config["species_list"])
+    rule all:
+        input:
+            dna_qc_outputs +
+            dna_mapping_outputs +
+            dna_assembly_outputs +
+            dna_depth_outputs +
+            dna_snpeff_outputs +
+            dna_amr_outputs
+    include: "rules/qc.smk"
+    include: "rules/mapping.smk"
+    include: "rules/assembly.smk"
+    include: "rules/mk_rm_duplication.smk"
+    include: "rules/SNPIndel.smk"
+    include: "rules/annotation.smk"
+    include: "rules/plots.smk"

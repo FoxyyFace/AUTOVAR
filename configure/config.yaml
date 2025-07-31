@@ -1,0 +1,22 @@
+global:
+  strict_qc: False  
+  #it's for DNAseq.
+  #control the rule "trim_adapter",if use Faslse, the script will stop with pecentage, else it will stop with numbers. with 0.00% or 0.
+  #dafault is False,use True will consume a lot of computing resource an time(about 60% in this rule),but it can remove the adapter or transposon sequence completely.
+
+  mode: "RNA" 
+  #RNA or DNA.
+  #SNP,Indel,snpEff annotation.and simple visualization is included in DNAmode.
+  #featureCounts ,Karen2(for metagenomic analysis,classify the species) is included RNAmode 
+
+  #new mode is developing......
+
+
+gatk_VariantFiltration:
+  SNP:
+    filter_name: "SNP"
+    filter_expression: "QD < 2.0 || MQ < 40.0 || FS > 60.0 || SOR > 3.0 || MQRankSum < -12.5 || ReadPosRankSum < -8.0"
+  INDEL:
+    filter_name: "INDEL"
+    filter_expression: "QD < 2.0 || FS > 200.0 || SOR > 10.0 || MQRankSum < -12.5 || ReadPosRankSum < -8.0"
+

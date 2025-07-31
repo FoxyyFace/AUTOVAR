@@ -1,0 +1,10 @@
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - subread=2.1.1
+  # - kraken2
+  - pandas
+  - matplotlib
+  - seaborn

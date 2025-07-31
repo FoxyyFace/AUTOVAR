@@ -1,0 +1,14 @@
+reference:
+  Pseudomonas_aeruginosa:
+    name: "Pseudomonas_aeruginosa"
+    path: "data/reference/Pseudomonas_aeruginosa/Pseudomonas_aeruginosa.fasta"
+    source: "NONE"
+    prefix: "PA14"
+    gff: "data/reference/Pseudomonas_aeruginosa/Pseudomonas_aeruginosa.gff"
+
+
+kraken:
+  standard_08: "/home/oliver/k2_standard_08gb"
+  standard_16: "/home/oliver/k2_standard_16gb"
+
+

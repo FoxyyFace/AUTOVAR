@@ -1,0 +1,8 @@
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - cutadapt =2.6
+  - trim-galore =0.6.10
+  - fastp =0.22.0

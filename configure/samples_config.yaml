@@ -1,0 +1,11 @@
+species_list:
+- Pseudomonas_aeruginosa
+samples:
+  Pseudomonas_aeruginosa:
+    Mab_1_LHF18427_L5:
+      type: RNA
+      platform: Illumina
+      fq_paths:
+      - data/samples/Pseudomonas_aeruginosa/Mab_1_LHF18427_L5/Mab_1_LHF18427_L5_1.fq.gz
+      - data/samples/Pseudomonas_aeruginosa/Mab_1_LHF18427_L5/Mab_1_LHF18427_L5_2.fq.gz
+      source: unknown

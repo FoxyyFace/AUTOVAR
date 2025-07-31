@@ -1,0 +1,21 @@
+# ./profile_slurm/config.yaml
+executor: slurm
+cores: all  # 关键修复 - 添加此行
+jobs: 10
+latency-wait: 60
+keep-going: true
+default-resources:
+  - mem_mb=49152
+  - time_min=2880
+  
+  
+slurm:
+  partition: "intel-sc3,amd-ep2,intel-sc3-32c"
+  qos: normal
+  extra: "
+    -N 1
+    -n {threads}
+    --mem={resources.mem_mb}
+    -J {rule}
+    --output=slurm_logs/%x_%j.out
+    --error=slurm_logs/%x_%j.err"
