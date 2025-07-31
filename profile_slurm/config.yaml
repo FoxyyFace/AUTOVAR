@@ -1,6 +1,6 @@
 # ./profile_slurm/config.yaml
 executor: slurm
-cores: all  # 关键修复 - 添加此行
+cores: all 
 jobs: 10
 latency-wait: 60
 keep-going: true
