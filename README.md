@@ -141,7 +141,8 @@ AUTOVAR/
 
 **重要文件命名规则**  
 - 所有文件和目录名称只能使用**英文字母**、**数字**和**下划线(_)**  
-- 禁止使用中文、空格、特殊字符或其他非ASCII字符  
+- 禁止使用中文、空格、特殊字符或其他非ASCII字符
+- 注意目录名称sampleX需要和文件名sampleX_1.fq.gz中的部分一致
 - 示例：  
   - 有效：`sample_1.fq.gz`, `ref_genome.fa`, `annotation.gff`  
   - 无效：`样本1.fq.gz`, `ref genome.fa`, `参考基因组.fa`  
